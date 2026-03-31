@@ -11,22 +11,22 @@ export const MarkerIcon: React.FC<MarkerIconProps> = ({ type, isSelected }) => {
   const getIcon = () => {
     switch (type) {
       case 'Military Base':
-        return <Shield className="w-6 h-6" />;
+        return <Shield className="w-5 h-5" />;
       case 'Civilian Community':
-        return <Users className="w-6 h-6" />;
+        return <Users className="w-5 h-5" />;
       case 'Battle':
-        return <Sword className="w-6 h-6" />;
+        return <Sword className="w-5 h-5" />;
       default:
-        return <MapPin className="w-6 h-6" />;
+        return <MapPin className="w-5 h-5" />;
     }
   };
 
   return (
     <div className={`
-      flex items-center justify-center w-10 h-10 rounded-full border-2 transition-all duration-300
+      flex items-center justify-center w-10 h-10 rounded-2xl border-2 transition-all duration-300 modern-shadow
       ${isSelected 
-        ? 'bg-idf-olive text-white border-white scale-125 shadow-lg z-50' 
-        : 'bg-white text-idf-olive border-idf-olive hover:scale-110 shadow-md'}
+        ? 'bg-idf-olive text-white border-white scale-125 z-50' 
+        : 'bg-theme-card text-theme-text border-theme-border hover:scale-110'}
     `}>
       {getIcon()}
     </div>

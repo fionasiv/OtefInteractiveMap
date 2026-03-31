@@ -12,10 +12,20 @@ export function getYouTubeEmbedUrl(url: string): string {
   if (url.includes('youtube.com/embed/')) return url;
 
   let videoId = "";
-  if (url.includes('youtube.com/watch?v=')) {
-    videoId = url.split('v=')[1].split('&')[0];
-  } else if (url.includes('youtu.be/')) {
-    videoId = url.split('youtu.be/')[1].split('?')[0];
+  try {
+    if (url.includes('youtube.com/watch?v=')) {
+      const urlObj = new URL(url);
+      videoId = urlObj.searchParams.get('v') || "";
+    } else if (url.includes('youtu.be/')) {
+      const parts = url.split('youtu.be/');
+      if (parts[1]) {
+        videoId = parts[1].split('?')[0].split('/')[0];
+      }
+    } else if (url.includes('youtube.com/v/')) {
+      videoId = url.split('youtube.com/v/')[1].split('?')[0];
+    }
+  } catch (e) {
+    console.error("Error parsing YouTube URL:", e);
   }
 
   return videoId ? `https://www.youtube.com/embed/${videoId}` : url;

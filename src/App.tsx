@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { MapView } from './components/MapView';
 import { InfoPanel } from './components/InfoPanel';
@@ -12,6 +12,17 @@ import { motion, AnimatePresence } from 'motion/react';
 
 export default function App() {
   const [selectedLocation, setSelectedLocation] = useState<LocationData | null>(null);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [isDarkMode]);
+
+  const toggleTheme = () => setIsDarkMode(!isDarkMode);
 
   const handleLocationSelect = (location: LocationData) => {
     setSelectedLocation(location);
@@ -22,13 +33,14 @@ export default function App() {
   };
 
   return (
-    <div className="relative h-screen w-screen overflow-hidden flex flex-col font-sans">
-      <Header />
+    <div className="relative h-screen w-screen overflow-hidden flex flex-col font-sans bg-theme-bg text-theme-text transition-colors duration-300">
+      <Header isDarkMode={isDarkMode} onToggleTheme={toggleTheme} />
       
       <main className="flex-1 relative mt-20">
         <MapView 
           onLocationSelect={handleLocationSelect} 
           selectedLocation={selectedLocation} 
+          isDarkMode={isDarkMode}
         />
         
         <InfoPanel 
@@ -40,17 +52,20 @@ export default function App() {
         <AnimatePresence>
           {!selectedLocation && (
             <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              className="absolute top-8 right-8 z-[400] max-w-sm bg-white/95 backdrop-blur-md p-8 rounded-2xl shadow-2xl border border-idf-olive/10 hidden md:block"
+              initial={{ opacity: 0, y: 20, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              className="absolute top-8 right-8 z-[400] max-w-sm bg-theme-card glass p-8 rounded-3xl modern-shadow border border-theme-border hidden md:block"
             >
+              <div className="w-12 h-12 bg-idf-olive/10 rounded-2xl flex items-center justify-center mb-6">
+                <div className="w-6 h-6 bg-idf-olive rounded-lg rotate-45" />
+              </div>
               <h2 className="text-2xl font-bold text-idf-olive mb-4">ברוכים הבאים, צוערים</h2>
-              <p className="text-heritage-gray leading-relaxed mb-6">
+              <p className="text-theme-text/70 leading-relaxed mb-8 text-lg">
                 מפה זו נועדה לשמש ככלי לימודי וחינוכי להכרת אירועי הגבורה והלחימה בעוטף עזה. 
                 נווטו במפה ולחצו על הנקודות השונות כדי ללמוד על המנהיגות, ההחלטות והערכים שהופגנו בשטח.
               </p>
-              <div className="flex items-center gap-2 text-sm font-bold text-idf-olive-dark">
+              <div className="flex items-center gap-3 text-sm font-bold text-idf-olive">
                 <div className="w-2 h-2 rounded-full bg-idf-olive animate-pulse" />
                 בחרו נקודה על המפה להתחלה
               </div>

@@ -1,5 +1,5 @@
-@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&family=Heebo:wght@300;400;500;700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import "tailwindcss";
 
 @theme {
   --font-sans: "Assistant", "Heebo", "Rubik", ui-sans-serif, system-ui, sans-serif;
@@ -8,19 +8,36 @@
   --color-idf-olive: #4B5320;
   --color-idf-olive-light: #6B7340;
   --color-idf-olive-dark: #2B3300;
-  --color-heritage-gray: #4A4A4A;
-  --color-heritage-sand: #F5F2ED;
+  
+  --color-theme-bg: var(--bg-color);
+  --color-theme-text: var(--text-color);
+  --color-theme-card: var(--card-bg);
+  --color-theme-border: var(--border-color);
 }
 
 :root {
-  background-color: var(--color-heritage-sand);
-  color: #1a1a1a;
+  --bg-color: #F5F2ED;
+  --text-color: #1a1a1a;
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --border-color: rgba(75, 83, 32, 0.1);
+  
+  background-color: var(--bg-color);
+  color: var(--text-color);
   direction: rtl;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+:root.dark {
+  --bg-color: #121212;
+  --text-color: #f5f5f5;
+  --card-bg: rgba(30, 30, 30, 0.9);
+  --border-color: rgba(255, 255, 255, 0.1);
 }
 
 body {
   margin: 0;
   font-family: var(--font-sans);
+  overflow: hidden;
 }
 
 /* Leaflet map height and custom styles */
@@ -35,7 +52,7 @@ body {
   border: none;
 }
 
-/* Custom scrollbar for the side panel */
+/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -49,6 +66,11 @@ body {
   border-radius: 10px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-idf-olive);
+.glass {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.modern-shadow {
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
 }

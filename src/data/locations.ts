@@ -173,7 +173,7 @@ export const locations: LocationData[] = [
     "description": "הבמה המרכזית של פסטיבל הנובה, משם הוכרז על סיום המסיבה בעקבות המטחים והחלה מנוסת ההמונים.",
     "leadershipFocus": "שליטה וניהול קהל בשעת חירום – הפעולה הראשונית של מארגני האירוע בכיבוי המוזיקה ופתיחת שערי החירום.",
     "timeline": [],
-    "primaryVideoUrl": "https://youtu.be/YMlweP86kC4?si=o7zkc3oP-CrAcQ1S",
+    "primaryVideoUrl": "https://youtu.be/YMIweP86kC4?si=o7zkc3oP-CrAcQ1S",
     "mediaAssets": [{
       "type": "image",
       "url": "https://upload.wikimedia.org/wikipedia/commons/2/22/%D7%9E%D7%AA%D7%97%D7%9D_%D7%90%D7%A0%D7%93%D7%A8%D7%98%D7%AA_%D7%94%D7%A0%D7%95%D7%91%D7%94_%D7%9E%D7%A8%D7%97%D7%A4%D7%9F.jpg",
