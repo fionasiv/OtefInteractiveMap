@@ -1,0 +1,54 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&family=Heebo:wght@300;400;500;700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+@theme {
+  --font-sans: "Assistant", "Heebo", "Rubik", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Rubik", serif;
+
+  --color-idf-olive: #4B5320;
+  --color-idf-olive-light: #6B7340;
+  --color-idf-olive-dark: #2B3300;
+  --color-heritage-gray: #4A4A4A;
+  --color-heritage-sand: #F5F2ED;
+}
+
+:root {
+  background-color: var(--color-heritage-sand);
+  color: #1a1a1a;
+  direction: rtl;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+}
+
+/* Leaflet map height and custom styles */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  background: #242424 !important;
+}
+
+.custom-marker-icon {
+  background: none;
+  border: none;
+}
+
+/* Custom scrollbar for the side panel */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-idf-olive-light);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-idf-olive);
+}

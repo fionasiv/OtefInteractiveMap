@@ -1,0 +1,5 @@
+{
+  "name": "Otef Aza Heritage Map",
+  "description": "An interactive memorial and educational map for IDF cadets, focusing on leadership and heroism during the October 7th events.",
+  "requestFramePermissions": ["geolocation"]
+}
