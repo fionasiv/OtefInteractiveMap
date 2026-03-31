@@ -87,7 +87,7 @@ export const locations: LocationData[] = [
     "primaryVideoUrl": "https://youtu.be/BVZLDdPVk50?si=bJKoDLtzRZbXcVqy",
     "mediaAssets": [{
       "type": "image",
-      "url": "https://www.tiuli.com/articles/1668/-49",
+      "url": "https://www.tiuli.com/image/413b297abad5ec367d587bb8fc7b5f47.jpeg?&width=702&height=514",
       "caption": "הבר הקטן במתחם מסיבת המאשרום"
     }],
     "lessonsLearned": "הצורך בסריקה מבצעית מדוקדקת של מבנים ארעיים בזירת לחימה חקלאית/אזרחית."
