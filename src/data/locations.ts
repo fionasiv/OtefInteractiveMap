@@ -45,7 +45,11 @@ export const locations: LocationData[] = [
       { "time": "11:47", "description": "מחבל מגלה את המסתתרים במכולה ויורה בהם[cite: 4]." }
     ],
     "primaryVideoUrl": "https://www.youtube.com/watch?v=y4rcNxAkXZw",
-    "mediaAssets": [],
+    "mediaAssets": [{
+      "type": "image",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/130917_reim_parking_lot_nova_site_PikiWiki_Israel.jpg/960px-130917_reim_parking_lot_nova_site_PikiWiki_Israel.jpg",
+      "caption": "מכולת האשפה הצהובה"
+    }],
     "lessonsLearned": "חשיבות הפעולה המהירה וחתירה למגע של כוחות הביטחון כדי להגן על ריכוזי אזרחים הנמצאים תחת מתקפה."
   },
   {
@@ -63,7 +67,11 @@ export const locations: LocationData[] = [
       { "time": "12:00", "description": "אלישע ליבמן, לוחם שקפץ מביתו, מגיע עם סמח\"ט גבעתי לחפש את אחיו אליקים ז\"ל, בטרם יעבור ללחימה בכפר עזה." },
       { "time": "21:00", "description": "יחצ\"א וזק\"א סורקים את השטח ומפנים חללים תחת תנאי לחימה קשים שמקשים על הזיהוי." }
     ],
-    "mediaAssets": [],
+    "mediaAssets": [{
+      "type": "image",
+      "url": "https://ambulance.co.il/wp-content/uploads/2024/05/%D7%90%D7%9E%D7%91%D7%95%D7%9C%D7%A0%D7%A1-%D7%A9%D7%A8%D7%95%D7%A3.jpeg",
+      "caption": "סיפור האמבולנס"
+    }],
     "lessonsLearned": "רוח הלחימה ודבקות במשימה של כוחות רפואה והצלה; ההכרח המבצעי בסריקה ופינוי חללים גם תחת תנאי לחימה מורכבים."
   },
   {
@@ -77,7 +85,11 @@ export const locations: LocationData[] = [
     "leadershipFocus": "הבנת זירת האירוע המורכבת בה אזרחים משתמשים בתשתיות ארעיות למחסה.",
     "timeline": [],
     "primaryVideoUrl": "https://youtu.be/BVZLDdPVk50?si=bJKoDLtzRZbXcVqy",
-    "mediaAssets": [],
+    "mediaAssets": [{
+      "type": "image",
+      "url": "https://www.tiuli.com/articles/1668/-49",
+      "caption": "הבר הקטן במתחם מסיבת המאשרום"
+    }],
     "lessonsLearned": "הצורך בסריקה מבצעית מדוקדקת של מבנים ארעיים בזירת לחימה חקלאית/אזרחית."
   },
   {
@@ -90,7 +102,11 @@ export const locations: LocationData[] = [
     "description": "מתחם הפיקוד של המשטרה שהפך לנקודת ריכוז והגנה. במקום מוצג קיר הנצחה ל-20 שוטרים ושוטרות שנהרגו בקרב, כולל צוותי רפואה וטיפול (כמו לירון ברדה וליעם בור) שנרצחו בעת טיפול בפצועים במרפאה.",
     "leadershipFocus": "אחריות המפקד בחזית: שוטרים וצוותי רפואה שניהלו קרב בלימה מול כוחות עדיפים, והקריבו את חייהם כדי לתת זמן לאזרחים להימלט.",
     "timeline": [],
-    "mediaAssets": [],
+    "mediaAssets": [{
+      "type": "image",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/%D7%90%D7%A0%D7%93%D7%A8%D7%98%D7%AA_%D7%A0%D7%A8%D7%A6%D7%97%D7%99_%D7%A4%D7%A1%D7%98%D7%99%D7%91%D7%9C_%D7%A0%D7%95%D7%91%D7%94_%D7%94%D7%9E%D7%A0%D7%A6%D7%99%D7%97%D7%94_%D7%90%D7%AA_%D7%94%D7%A0%D7%A8%D7%A6%D7%97%D7%99%D7%9D_%D7%91%D7%A4%D7%A1%D7%98%D7%99%D7%91%D7%9C_%D7%91-6%E2%80%937_%D7%91%D7%90%D7%95%D7%A7%D7%98%D7%95%D7%91%D7%A8_2023._%D7%9E%D7%9E%D7%95%D7%A7%D7%9E%D7%AA_%D7%91%D7%97%D7%A0%D7%99%D7%95%D7%9F_%D7%A8%D7%A2%D7%99%D7%9D_%D7%A9%D7%9C%D7%99%D7%93_%D7%A7%D7%99%D7%91%D7%95%D7%A5_%D7%A8%D7%A2%D7%99%D7%9D%2C_24.jpg/1920px-thumbnail.jpg",
+      "caption": "חפ\"ק המשטרה"
+    }],
     "lessonsLearned": "עמידה במשימה וגבורה עילאית של כוחות שיטור ורפואה שהיוו את קו ההגנה הראשון; חשיבות החפ\"ק כמוקד לניהול שליטה בשעת חירום."
   },
   {
@@ -103,7 +119,11 @@ export const locations: LocationData[] = [
     "description": "אזור החורש והמיגונית הסמוכה, אשר שימשו כנקודת מחסה וניסיון מילוט עבור אזרחים רבים תחת האש.",
     "leadershipFocus": "התמודדות עם חוסר ודאות וקבלת החלטות מהירות של אזרחים תחת אש חיה בשטח פתוח.",
     "timeline": [],
-    "mediaAssets": [],
+    "mediaAssets": [{
+      "type": "image",
+      "url": "https://img.haarets.co.il/bs/0000018b-436e-de3d-a58f-cb6f1d540000/34/0d/28cd4b0c4ce18838ecdad7fe65be/17535.jpg",
+      "caption": "החורש (המיגונית)"
+    }],
     "lessonsLearned": "חשיבות הכרת השטח ואפשרויות החילוץ מתוך מבני תשתית אזרחיים פריפריאליים תחת התקפה."
   },
   {
@@ -136,7 +156,11 @@ export const locations: LocationData[] = [
     "leadershipFocus": "הבנת האינסטינקט האזרחי להישרדות במקומות מסתור מאולתרים.",
     "timeline": [],
     "primaryVideoUrl": "https://www.youtube.com/watch?v=liToR4QqkhQ",
-    "mediaAssets": [],
+    "mediaAssets": [{
+      "type": "image",
+      "url": "https://i.ytimg.com/vi/liToR4QqkhQ/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AH-CYAC0AWKAgwIABABGGUgTyhJMA8=&rs=AOn4CLAlSsAosPDB5mgkNyWdnLNTFLKGIw",
+      "caption": "הבנות שהתחבאו בתא שירותים"
+    }],
     "lessonsLearned": "המורכבות בטיהור שטחים רוויי אזרחים הנמצאים במקומות מסתור קטנים."
   },
   {
@@ -150,7 +174,11 @@ export const locations: LocationData[] = [
     "leadershipFocus": "שליטה וניהול קהל בשעת חירום – הפעולה הראשונית של מארגני האירוע בכיבוי המוזיקה ופתיחת שערי החירום.",
     "timeline": [],
     "primaryVideoUrl": "https://youtu.be/YMlweP86kC4?si=o7zkc3oP-CrAcQ1S",
-    "mediaAssets": [],
+    "mediaAssets": [{
+      "type": "image",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/2/22/%D7%9E%D7%AA%D7%97%D7%9D_%D7%90%D7%A0%D7%93%D7%A8%D7%98%D7%AA_%D7%94%D7%A0%D7%95%D7%91%D7%94_%D7%9E%D7%A8%D7%97%D7%A4%D7%9F.jpg",
+      "caption": "הבמה המרכזית של פסטיבל נובה"
+    }],
     "lessonsLearned": "תפקוד בעת מעבר פתאומי משגרה לחירום."
   }
 ]
