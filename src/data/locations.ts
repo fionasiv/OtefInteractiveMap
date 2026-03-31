@@ -117,7 +117,12 @@ export const locations: LocationData[] = [
     "leadershipFocus": "רוח צה\"ל והחברה הישראלית: חשיבות ההנצחה והזיכרון כחלק מבניית החוסן הלאומי והמבצעי.",
     "timeline": [],
     "primaryVideoUrl": "https://youtu.be/Uoi-1nZX7P8?si=gZRZXMIQKrDN_YXK",
-    "mediaAssets": [],
+    "mediaAssets": [{
+      "type": "image",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/IHM_%D7%9E%D7%99%D7%A6%D7%91_%D7%9B%D7%9C%D7%A0%D7%99%D7%95%D7%AA_%D7%9C%D7%A4%D7%A0%D7%99_%D7%94%D7%92%D7%A9%D7%9D.jpeg/960px-IHM_%D7%9E%D7%99%D7%A6%D7%91_%D7%9B%D7%9C%D7%A0%D7%99%D7%95%D7%AA_%D7%9C%D7%A4%D7%A0%D7%99_%D7%94%D7%92%D7%A9%D7%9D.jpeg",
+      "caption": "מיצב כלניות לפני הגשם"
+    }
+  ],
     "lessonsLearned": "הזיכרון כמנוע לעשייה ולמחויבות ערכית של כל קצין ולוחם בצה\"ל; החיבור העמוק בין צבא ההגנה לישראל לבין העם והאדמה."
   },
   {

@@ -19,10 +19,6 @@ export const Header: React.FC = () => {
           <MapIcon className="w-4 h-4" />
           <span>מפה אינטראקטיבית</span>
         </button>
-        <button className="flex items-center gap-2 text-sm font-bold opacity-60 hover:opacity-100 transition-opacity">
-          <BookOpen className="w-4 h-4" />
-          <span>ערכי צה"ל ולקחים</span>
-        </button>
       </nav>
 
       <div className="flex items-center gap-4">

@@ -12,17 +12,24 @@ interface MapViewProps {
 }
 
 // Component to handle map centering and zooming
-const ChangeView = ({ center, zoom }: { center: [number, number], zoom: number }) => {
+const ChangeView = ({ center, zoom, bounds }: { center?: [number, number], zoom?: number, bounds?: L.LatLngBoundsExpression }) => {
   const map = useMap();
   useEffect(() => {
-    map.setView(center, zoom);
-  }, [center, zoom, map]);
+    if (bounds) {
+      map.fitBounds(bounds, { padding: [50, 50] });
+    } else if (center && zoom !== undefined) {
+      map.setView(center, zoom);
+    }
+  }, [center, zoom, bounds, map]);
   return null;
 };
 
 export const MapView: React.FC<MapViewProps> = ({ onLocationSelect, selectedLocation }) => {
   const defaultCenter: [number, number] = [31.45, 34.5]; // Gaza Envelope center
   const defaultZoom = 11;
+
+  // Calculate bounds for all locations
+  const allBounds = L.latLngBounds(locations.map(loc => [loc.coordinates.lat, loc.coordinates.lng]));
 
   const createCustomIcon = (location: LocationData) => {
     const isSelected = selectedLocation?.id === location.id;
@@ -53,11 +60,13 @@ export const MapView: React.FC<MapViewProps> = ({ onLocationSelect, selectedLoca
           url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
         />
 
-        {selectedLocation && (
+        {selectedLocation ? (
           <ChangeView 
             center={[selectedLocation.coordinates.lat, selectedLocation.coordinates.lng]} 
             zoom={13} 
           />
+        ) : (
+          <ChangeView bounds={allBounds} />
         )}
 
         {locations.map((loc) => (
