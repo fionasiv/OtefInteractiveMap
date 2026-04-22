@@ -32,16 +32,6 @@ export default function App() {
     setSelectedLocation(null);
   };
 
-  useEffect(() => {
-    // Preload images for better UX
-    locations.forEach(loc => {
-      if (loc.mediaAssets[0]?.url) {
-        const img = new Image();
-        img.src = loc.mediaAssets[0].url;
-      }
-    });
-  }, []);
-
   return (
     <div className="relative h-screen w-screen overflow-hidden flex flex-col font-sans bg-theme-bg text-theme-text transition-colors duration-300">
       <Header isDarkMode={isDarkMode} onToggleTheme={toggleTheme} />
