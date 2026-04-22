@@ -5,6 +5,7 @@ import 'leaflet/dist/leaflet.css';
 import { locations, LocationData } from '../data/locations';
 import { MarkerIcon } from './MarkerIcon';
 import { renderToStaticMarkup } from 'react-dom/server';
+import { Navigation } from 'lucide-react';
 
 interface MapViewProps {
   onLocationSelect: (location: LocationData) => void;
@@ -28,9 +29,34 @@ const ChangeView = ({ center, zoom, bounds }: { center?: [number, number], zoom?
 export const MapView: React.FC<MapViewProps> = ({ onLocationSelect, selectedLocation, isDarkMode }) => {
   const defaultCenter: [number, number] = [31.45, 34.5]; // Gaza Envelope center
   const defaultZoom = 11;
+  const [userLocation, setUserLocation] = useState<[number, number] | null>(null);
+  const [mapView, setMapView] = useState<{ center?: [number, number], zoom?: number, bounds?: L.LatLngBoundsExpression }>({});
 
   // Calculate bounds for all locations
   const allBounds = L.latLngBounds(locations.map(loc => [loc.coordinates.lat, loc.coordinates.lng]));
+
+  useEffect(() => {
+    if ("geolocation" in navigator) {
+      const watchId = navigator.geolocation.watchPosition(
+        (position) => {
+          setUserLocation([position.coords.latitude, position.coords.longitude]);
+        },
+        (error) => {
+          console.error("Error getting location:", error);
+        },
+        { enableHighAccuracy: true }
+      );
+      return () => navigator.geolocation.clearWatch(watchId);
+    }
+  }, []);
+
+  const handleLocateMe = () => {
+    if (userLocation) {
+      setMapView({ center: userLocation, zoom: 15 });
+    } else {
+      alert("לא ניתן למצוא את המיקום שלך. וודא שהרשאות המיקום מאושרות.");
+    }
+  };
 
   const createCustomIcon = (location: LocationData) => {
     const isSelected = selectedLocation?.id === location.id;
@@ -43,6 +69,20 @@ export const MapView: React.FC<MapViewProps> = ({ onLocationSelect, selectedLoca
       className: 'custom-marker-icon',
       iconSize: [40, 40],
       iconAnchor: [20, 20],
+    });
+  };
+
+  const createUserIcon = () => {
+    return L.divIcon({
+      html: renderToStaticMarkup(
+        <div className="relative flex items-center justify-center">
+          <div className="absolute w-6 h-6 bg-blue-500 rounded-full animate-ping opacity-75" />
+          <div className="relative w-4 h-4 bg-blue-600 rounded-full border-2 border-white shadow-lg" />
+        </div>
+      ),
+      className: 'user-location-icon',
+      iconSize: [24, 24],
+      iconAnchor: [12, 12],
     });
   };
 
@@ -69,6 +109,8 @@ export const MapView: React.FC<MapViewProps> = ({ onLocationSelect, selectedLoca
             center={[selectedLocation.coordinates.lat, selectedLocation.coordinates.lng]} 
             zoom={13} 
           />
+        ) : mapView.center ? (
+          <ChangeView center={mapView.center} zoom={mapView.zoom} />
         ) : (
           <ChangeView bounds={allBounds} />
         )}
@@ -90,7 +132,24 @@ export const MapView: React.FC<MapViewProps> = ({ onLocationSelect, selectedLoca
             </Popup>
           </Marker>
         ))}
+
+        {userLocation && (
+          <Marker position={userLocation} icon={createUserIcon()}>
+            <Popup>
+              <div className="text-center font-bold">המיקום שלך</div>
+            </Popup>
+          </Marker>
+        )}
       </MapContainer>
+
+      {/* Locate Me Button */}
+      <button 
+        onClick={handleLocateMe}
+        className="absolute top-24 left-8 z-[500] bg-theme-card glass p-3 rounded-2xl modern-shadow border border-theme-border text-idf-olive hover:bg-idf-olive/10 transition-all group"
+        title="המיקום שלי"
+      >
+        <Navigation className="w-6 h-6 group-hover:scale-110 transition-transform" />
+      </button>
 
       {/* Legend */}
       <div className="absolute bottom-8 left-8 z-[500] bg-theme-card glass p-6 rounded-3xl modern-shadow border border-theme-border hidden md:block min-w-[200px]">

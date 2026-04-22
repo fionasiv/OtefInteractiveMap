@@ -47,7 +47,7 @@ export const locations: LocationData[] = [
     "primaryVideoUrl": "https://www.youtube.com/watch?v=y4rcNxAkXZw",
     "mediaAssets": [{
       "type": "image",
-      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/130917_reim_parking_lot_nova_site_PikiWiki_Israel.jpg/960px-130917_reim_parking_lot_nova_site_PikiWiki_Israel.jpg",
+      "url": "/assets/ashpa.jpg",
       "caption": "מכולת האשפה הצהובה"
     }],
     "lessonsLearned": "חשיבות הפעולה המהירה וחתירה למגע של כוחות הביטחון כדי להגן על ריכוזי אזרחים הנמצאים תחת מתקפה."
@@ -69,7 +69,7 @@ export const locations: LocationData[] = [
     ],
     "mediaAssets": [{
       "type": "image",
-      "url": "https://ambulance.co.il/wp-content/uploads/2024/05/%D7%90%D7%9E%D7%91%D7%95%D7%9C%D7%A0%D7%A1-%D7%A9%D7%A8%D7%95%D7%A3.jpeg",
+      "url": "/assets/ambulance.jpeg",
       "caption": "סיפור האמבולנס"
     }],
     "lessonsLearned": "רוח הלחימה ודבקות במשימה של כוחות רפואה והצלה; ההכרח המבצעי בסריקה ופינוי חללים גם תחת תנאי לחימה מורכבים."
@@ -87,7 +87,7 @@ export const locations: LocationData[] = [
     "primaryVideoUrl": "https://youtu.be/BVZLDdPVk50?si=bJKoDLtzRZbXcVqy",
     "mediaAssets": [{
       "type": "image",
-      "url": "https://www.tiuli.com/image/413b297abad5ec367d587bb8fc7b5f47.jpeg?&width=702&height=514",
+      "url": "/assets/bar.jpeg",
       "caption": "הבר הקטן במתחם מסיבת המאשרום"
     }],
     "lessonsLearned": "הצורך בסריקה מבצעית מדוקדקת של מבנים ארעיים בזירת לחימה חקלאית/אזרחית."
@@ -104,7 +104,7 @@ export const locations: LocationData[] = [
     "timeline": [],
     "mediaAssets": [{
       "type": "image",
-      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/%D7%90%D7%A0%D7%93%D7%A8%D7%98%D7%AA_%D7%A0%D7%A8%D7%A6%D7%97%D7%99_%D7%A4%D7%A1%D7%98%D7%99%D7%91%D7%9C_%D7%A0%D7%95%D7%91%D7%94_%D7%94%D7%9E%D7%A0%D7%A6%D7%99%D7%97%D7%94_%D7%90%D7%AA_%D7%94%D7%A0%D7%A8%D7%A6%D7%97%D7%99%D7%9D_%D7%91%D7%A4%D7%A1%D7%98%D7%99%D7%91%D7%9C_%D7%91-6%E2%80%937_%D7%91%D7%90%D7%95%D7%A7%D7%98%D7%95%D7%91%D7%A8_2023._%D7%9E%D7%9E%D7%95%D7%A7%D7%9E%D7%AA_%D7%91%D7%97%D7%A0%D7%99%D7%95%D7%9F_%D7%A8%D7%A2%D7%99%D7%9D_%D7%A9%D7%9C%D7%99%D7%93_%D7%A7%D7%99%D7%91%D7%95%D7%A5_%D7%A8%D7%A2%D7%99%D7%9D%2C_24.jpg/1920px-thumbnail.jpg",
+      "url": "/assets/police.jpg",
       "caption": "חפ\"ק המשטרה"
     }],
     "lessonsLearned": "עמידה במשימה וגבורה עילאית של כוחות שיטור ורפואה שהיוו את קו ההגנה הראשון; חשיבות החפ\"ק כמוקד לניהול שליטה בשעת חירום."
@@ -121,7 +121,7 @@ export const locations: LocationData[] = [
     "timeline": [],
     "mediaAssets": [{
       "type": "image",
-      "url": "https://img.haarets.co.il/bs/0000018b-436e-de3d-a58f-cb6f1d540000/34/0d/28cd4b0c4ce18838ecdad7fe65be/17535.jpg",
+      "url": "/assets/horesh.webp",
       "caption": "החורש (המיגונית)"
     }],
     "lessonsLearned": "חשיבות הכרת השטח ואפשרויות החילוץ מתוך מבני תשתית אזרחיים פריפריאליים תחת התקפה."
@@ -139,7 +139,7 @@ export const locations: LocationData[] = [
     "primaryVideoUrl": "https://youtu.be/Uoi-1nZX7P8?si=gZRZXMIQKrDN_YXK",
     "mediaAssets": [{
       "type": "image",
-      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/IHM_%D7%9E%D7%99%D7%A6%D7%91_%D7%9B%D7%9C%D7%A0%D7%99%D7%95%D7%AA_%D7%9C%D7%A4%D7%A0%D7%99_%D7%94%D7%92%D7%A9%D7%9D.jpeg/960px-IHM_%D7%9E%D7%99%D7%A6%D7%91_%D7%9B%D7%9C%D7%A0%D7%99%D7%95%D7%AA_%D7%9C%D7%A4%D7%A0%D7%99_%D7%94%D7%92%D7%A9%D7%9D.jpeg",
+      "url": "/assets/calaniot.jpeg",
       "caption": "מיצב כלניות לפני הגשם"
     }
   ],
@@ -158,7 +158,7 @@ export const locations: LocationData[] = [
     "primaryVideoUrl": "https://www.youtube.com/watch?v=liToR4QqkhQ",
     "mediaAssets": [{
       "type": "image",
-      "url": "https://i.ytimg.com/vi/liToR4QqkhQ/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AH-CYAC0AWKAgwIABABGGUgTyhJMA8=&rs=AOn4CLAlSsAosPDB5mgkNyWdnLNTFLKGIw",
+      "url": "/assets/toilet.jpg",
       "caption": "הבנות שהתחבאו בתא שירותים"
     }],
     "lessonsLearned": "המורכבות בטיהור שטחים רוויי אזרחים הנמצאים במקומות מסתור קטנים."
@@ -176,9 +176,30 @@ export const locations: LocationData[] = [
     "primaryVideoUrl": "https://youtu.be/YMIweP86kC4?si=o7zkc3oP-CrAcQ1S",
     "mediaAssets": [{
       "type": "image",
-      "url": "https://upload.wikimedia.org/wikipedia/commons/2/22/%D7%9E%D7%AA%D7%97%D7%9D_%D7%90%D7%A0%D7%93%D7%A8%D7%98%D7%AA_%D7%94%D7%A0%D7%95%D7%91%D7%94_%D7%9E%D7%A8%D7%97%D7%A4%D7%9F.jpg",
+      "url": "/assets/main_stage.jpg",
       "caption": "הבמה המרכזית של פסטיבל נובה"
     }],
     "lessonsLearned": "תפקוד בעת מעבר פתאומי משגרה לחירום."
-  }
+  },
+  {
+    "id": "ambulance-complex",
+    "locationName": "מתחם האמבולנס",
+    "coordinates": {
+      "lat": 31.398300,
+      "lng": 34.469900
+    },
+    "eventType": "Memorial",
+    "title": "מתחם האמבולנס: מחסה שהפך למלכודת",
+    "unitInfo": "מבלי פסטיבל הנובה",
+    "description": "״אמבולנס המוות״ במתחם הנובה הוא סמל לזוועות הטבח ב-7 באוקטובר 2023. במקום זה נרצחו כ-18 עד 20 צעירים לאחר שמצאו מסתור באמבולנס שחנה באזור המסיבה ברעים. מחבלי חמאס ירו טיל RPG והשליכו רימונים לעבר האמבולנס, שהפך מאז לחלק מאתר ההנצחה הרשמי בחניון רעים.",
+    "leadershipFocus": "התמודדות עם מחסות ארעיים: הבנת הדינמיקה של אזרחים המחפשים מחסה במצבי קיצון, והאתגר המורכב שבפינוי וחילוץ תחת אש בזירות בהן רכבים רכים משמשים כמגן.",
+    "timeline": [],
+    "primaryVideoUrl": "https://youtu.be/FFdUTOgH2rA",
+    "mediaAssets": [{
+      "type": "image",
+      "url": "/assets/ambulance.jpeg",
+      "caption": "מתחם האמבולנס: מחסה שהפך למלכודת"
+    }],
+    "lessonsLearned": "חשיבות ההיכרות עם זירת האירוע והבנת מגבלות המיגון אל מול נשק נ\"ט. הפקת לקחים לגבי ניהול שטחי כינוס וחניונים באירועים רבי-משתתפים."
+  },
 ]

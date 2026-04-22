@@ -30,6 +30,7 @@ export const InfoPanel: React.FC<InfoPanelProps> = ({ location, onClose }) => {
             alt={location.locationName}
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             referrerPolicy="no-referrer"
+            loading="lazy"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-theme-bg via-theme-bg/20 to-transparent" />
           

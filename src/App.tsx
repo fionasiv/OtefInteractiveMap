@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { MapView } from './components/MapView';
 import { InfoPanel } from './components/InfoPanel';
-import { LocationData } from './data/locations';
+import { locations, LocationData } from './data/locations';
 import { motion, AnimatePresence } from 'motion/react';
 
 export default function App() {
@@ -31,6 +31,16 @@ export default function App() {
   const handleClosePanel = () => {
     setSelectedLocation(null);
   };
+
+  useEffect(() => {
+    // Preload images for better UX
+    locations.forEach(loc => {
+      if (loc.mediaAssets[0]?.url) {
+        const img = new Image();
+        img.src = loc.mediaAssets[0].url;
+      }
+    });
+  }, []);
 
   return (
     <div className="relative h-screen w-screen overflow-hidden flex flex-col font-sans bg-theme-bg text-theme-text transition-colors duration-300">
