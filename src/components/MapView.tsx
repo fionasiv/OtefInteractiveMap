@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { locations, LocationData } from '../data/locations';
 import { MarkerIcon } from './MarkerIcon';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { Navigation } from 'lucide-react';
+import { Navigation, Maximize } from 'lucide-react';
 
 interface MapViewProps {
   onLocationSelect: (location: LocationData) => void;
@@ -27,9 +27,12 @@ const MapController = ({ center, zoom, bounds }: { center?: [number, number], zo
 
   useEffect(() => {
     if (bounds) {
-      map.fitBounds(bounds, { padding: [50, 50] });
+      // Narrower padding for a tighter fit
+      const isMobile = window.innerWidth < 768;
+      const padding: [number, number] = isMobile ? [40, 20] : [50, 50];
+      map.fitBounds(bounds, { padding, maxZoom: 22 });
     } else if (center && zoom !== undefined) {
-      map.setView(center, zoom);
+      map.setView(center, zoom, { animate: true });
     }
   }, [center, zoom, bounds, map]);
 
@@ -38,13 +41,15 @@ const MapController = ({ center, zoom, bounds }: { center?: [number, number], zo
 
 export const MapView: React.FC<MapViewProps> = ({ onLocationSelect, selectedLocation, isDarkMode }) => {
   const defaultCenter: [number, number] = [31.45, 34.5]; // Gaza Envelope center
-  const defaultZoom = 11;
+  const defaultZoom = 13;
   const [userLocation, setUserLocation] = useState<[number, number] | null>(null);
-  const [mapView, setMapView] = useState<{ center?: [number, number], zoom?: number, bounds?: L.LatLngBoundsExpression }>({});
+  const [mapView, setMapView] = useState<{ center?: [number, number], zoom?: number, bounds?: L.LatLngBoundsExpression | null }>({ bounds: null });
   const [isMapReady, setIsMapReady] = useState(false);
 
-  // Calculate bounds for all locations
-  const allBounds = L.latLngBounds(locations.map(loc => [loc.coordinates.lat, loc.coordinates.lng]));
+  // Calculate bounds for all locations once
+  const allBounds = useMemo(() => {
+    return L.latLngBounds(locations.map(loc => [loc.coordinates.lat, loc.coordinates.lng]));
+  }, []);
 
   useEffect(() => {
     if ("geolocation" in navigator) {
@@ -63,10 +68,14 @@ export const MapView: React.FC<MapViewProps> = ({ onLocationSelect, selectedLoca
 
   const handleLocateMe = () => {
     if (userLocation) {
-      setMapView({ center: userLocation, zoom: 15 });
+      setMapView({ center: userLocation, zoom: 15, bounds: null });
     } else {
       alert("לא ניתן למצוא את המיקום שלך. וודא שהרשאות המיקום מאושרות.");
     }
+  };
+
+  const handleResetView = () => {
+    setMapView({ bounds: allBounds });
   };
 
   const createCustomIcon = (location: LocationData) => {
@@ -129,11 +138,8 @@ export const MapView: React.FC<MapViewProps> = ({ onLocationSelect, selectedLoca
           updateWhenZooming={false}
         />
 
-        {selectedLocation ? (
-          <MapController 
-            center={[selectedLocation.coordinates.lat, selectedLocation.coordinates.lng]} 
-            zoom={13} 
-          />
+        {mapView.bounds ? (
+          <MapController bounds={mapView.bounds} />
         ) : mapView.center ? (
           <MapController center={mapView.center} zoom={mapView.zoom} />
         ) : (
@@ -171,14 +177,23 @@ export const MapView: React.FC<MapViewProps> = ({ onLocationSelect, selectedLoca
         )}
       </MapContainer>
 
-      {/* Locate Me Button */}
-      <button 
-        onClick={handleLocateMe}
-        className="absolute top-24 left-8 z-[500] bg-theme-card glass p-3 rounded-2xl modern-shadow border border-theme-border text-idf-olive hover:bg-idf-olive/10 transition-all group"
-        title="המיקום שלי"
-      >
-        <Navigation className="w-6 h-6 group-hover:scale-110 transition-transform" />
-      </button>
+      {/* Control Buttons */}
+      <div className="absolute top-24 left-8 z-[500] flex flex-col gap-3">
+        <button 
+          onClick={handleLocateMe}
+          className="bg-theme-card glass p-3 rounded-2xl modern-shadow border border-theme-border text-idf-olive hover:bg-idf-olive/10 transition-all group"
+          title="המיקום שלי"
+        >
+          <Navigation className="w-6 h-6 group-hover:scale-110 transition-transform" />
+        </button>
+        <button 
+          onClick={handleResetView}
+          className="bg-theme-card glass p-3 rounded-2xl modern-shadow border border-theme-border text-idf-olive hover:bg-idf-olive/10 transition-all group"
+          title="תצוגה כללית"
+        >
+          <Maximize className="w-6 h-6 group-hover:scale-110 transition-transform" />
+        </button>
+      </div>
 
       {/* Legend */}
       <div className="absolute bottom-8 left-8 z-[500] bg-theme-card glass p-6 rounded-3xl modern-shadow border border-theme-border hidden md:block min-w-[200px]">
