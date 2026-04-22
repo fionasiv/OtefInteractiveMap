@@ -104,7 +104,7 @@ export const locations: LocationData[] = [
     "timeline": [],
     "mediaAssets": [{
       "type": "image",
-      "url": "https://upload.wikimedia.org/wikipedia/commons/1/10/%D7%90%D7%A0%D7%93%D7%A8%D7%98%D7%AA_%D7%A0%D7%A8%D7%A6%D7%97%D7%99_%D7%A4%D7%A1%D7%98%D7%99%D7%91%D7%9C_%D7%A0%D7%95%D7%91%D7%94_%D7%94%D7%9E%D7%A0%D7%A6%D7%99%D7%97%D7%94_%D7%90%D7%AA_%D7%94%D7%A0%D7%A8%D7%A6%D7%97%D7%99%D7%9D_%D7%91%D7%A4%D7%A1%D7%98%D7%99%D7%91%D7%9C_%D7%91-6%E2%80%937_%D7%91%D7%90%D7%95%D7%A7%D7%98%D7%95%D7%91%D7%A8_2023._%D7%9E%D7%9E%D7%95%D7%A7%D7%9E%D7%AA_%D7%91%D7%97%D7%A0%D7%99%D7%95%D7%9F_%D7%A8%D7%A2%D7%99%D7%9D_%D7%A9%D7%9C%D7%99%D7%93_%D7%A7%D7%99%D7%91%D7%95%D7%A5_%D7%A8%D7%A2%D7%99%D7%9D,_24.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/%D7%90%D7%A0%D7%93%D7%A8%D7%98%D7%AA_%D7%A0%D7%A8%D7%A6%D7%97%D7%99_%D7%A4%D7%A1%D7%98%D7%99%D7%91%D7%9C_%D7%A0%D7%95%D7%91%D7%94_%D7%94%D7%9E%D7%A0%D7%A6%D7%99%D7%97%D7%94_%D7%90%D7%AA_%D7%94%D7%A0%D7%A8%D7%A6%D7%97%D7%99%D7%9D_%D7%91%D7%A4%D7%A1%D7%98%D7%99%D7%91%D7%9C_%D7%91-6%E2%80%937_%D7%91%D7%90%D7%95%D7%A7%D7%98%D7%95%D7%91%D7%A8_2023._%D7%9E%D7%9E%D7%95%D7%A7%D7%9E%D7%AA_%D7%91%D7%97%D7%A0%D7%99%D7%95%D7%9F_%D7%A8%D7%A2%D7%99%D7%9D_%D7%A9%D7%9C%D7%99%D7%93_%D7%A7%D7%99%D7%91%D7%95%D7%A5_%D7%A8%D7%A2%D7%99%D7%9D%2C_24.jpg/1920px-thumbnail.jpg",
       "caption": "חפ\"ק המשטרה"
     }],
     "lessonsLearned": "עמידה במשימה וגבורה עילאית של כוחות שיטור ורפואה שהיוו את קו ההגנה הראשון; חשיבות החפ\"ק כמוקד לניהול שליטה בשעת חירום."

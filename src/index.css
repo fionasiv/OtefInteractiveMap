@@ -42,8 +42,13 @@ body {
 
 /* Leaflet map height and custom styles */
 .leaflet-container {
-  width: 100%;
-  height: 100%;
+  width: 100% !important;
+  height: 100% !important;
+  background: #E5E3DF !important;
+  outline: none;
+}
+
+.dark .leaflet-container {
   background: #242424 !important;
 }
 

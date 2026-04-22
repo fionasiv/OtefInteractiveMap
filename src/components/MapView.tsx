@@ -13,9 +13,18 @@ interface MapViewProps {
   isDarkMode: boolean;
 }
 
-// Component to handle map centering and zooming
-const ChangeView = ({ center, zoom, bounds }: { center?: [number, number], zoom?: number, bounds?: L.LatLngBoundsExpression }) => {
+// Component to handle map centering, zooming and size invalidation
+const MapController = ({ center, zoom, bounds }: { center?: [number, number], zoom?: number, bounds?: L.LatLngBoundsExpression }) => {
   const map = useMap();
+
+  useEffect(() => {
+    // Fix for "half loading" map issues on mobile/dynamic containers
+    const timer = setTimeout(() => {
+      map.invalidateSize();
+    }, 200);
+    return () => clearTimeout(timer);
+  }, [map]);
+
   useEffect(() => {
     if (bounds) {
       map.fitBounds(bounds, { padding: [50, 50] });
@@ -23,6 +32,7 @@ const ChangeView = ({ center, zoom, bounds }: { center?: [number, number], zoom?
       map.setView(center, zoom);
     }
   }, [center, zoom, bounds, map]);
+
   return null;
 };
 
@@ -31,6 +41,7 @@ export const MapView: React.FC<MapViewProps> = ({ onLocationSelect, selectedLoca
   const defaultZoom = 11;
   const [userLocation, setUserLocation] = useState<[number, number] | null>(null);
   const [mapView, setMapView] = useState<{ center?: [number, number], zoom?: number, bounds?: L.LatLngBoundsExpression }>({});
+  const [isMapReady, setIsMapReady] = useState(false);
 
   // Calculate bounds for all locations
   const allBounds = L.latLngBounds(locations.map(loc => [loc.coordinates.lat, loc.coordinates.lng]));
@@ -91,28 +102,42 @@ export const MapView: React.FC<MapViewProps> = ({ onLocationSelect, selectedLoca
     : "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}";
 
   return (
-    <div className="relative w-full h-full transition-colors duration-300">
+    <div className="relative w-full h-full transition-colors duration-300 bg-[#E5E3DF] dark:bg-[#242424]">
+      {!isMapReady && (
+        <div className="absolute inset-0 z-[1000] flex items-center justify-center bg-theme-bg/50 backdrop-blur-sm">
+          <div className="flex flex-col items-center gap-4">
+            <div className="w-12 h-12 border-4 border-idf-olive border-t-transparent rounded-full animate-spin" />
+            <p className="text-idf-olive font-bold animate-pulse text-sm">טוען מפה...</p>
+          </div>
+        </div>
+      )}
       <MapContainer 
         center={defaultCenter} 
         zoom={defaultZoom} 
         scrollWheelZoom={true}
-        className="z-0"
+        className="w-full h-full z-0"
         zoomControl={false}
+        whenReady={() => setIsMapReady(true)}
+        preferCanvas={true}
+        tap={false}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.esri.com/">Esri</a>, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EBP, and the GIS User Community'
           url={tileUrl}
+          keepBuffer={8}
+          updateWhenIdle={false}
+          updateWhenZooming={false}
         />
 
         {selectedLocation ? (
-          <ChangeView 
+          <MapController 
             center={[selectedLocation.coordinates.lat, selectedLocation.coordinates.lng]} 
             zoom={13} 
           />
         ) : mapView.center ? (
-          <ChangeView center={mapView.center} zoom={mapView.zoom} />
+          <MapController center={mapView.center} zoom={mapView.zoom} />
         ) : (
-          <ChangeView bounds={allBounds} />
+          <MapController bounds={allBounds} />
         )}
 
         {locations.map((loc) => (
@@ -121,13 +146,17 @@ export const MapView: React.FC<MapViewProps> = ({ onLocationSelect, selectedLoca
             position={[loc.coordinates.lat, loc.coordinates.lng]}
             icon={createCustomIcon(loc)}
             eventHandlers={{
-              click: () => onLocationSelect(loc),
+              click: (e) => {
+                L.DomEvent.stopPropagation(e);
+                onLocationSelect(loc);
+              },
             }}
           >
-            <Popup className="custom-popup">
-              <div className="text-right font-sans p-1">
-                <h4 className="font-bold text-idf-olive text-sm">{loc.locationName}</h4>
-                <p className="text-[10px] text-gray-500 font-bold mt-0.5">{loc.eventType}</p>
+            <Popup className="custom-popup" closeButton={false} offset={[0, -10]}>
+              <div className="text-right font-sans p-1 min-w-[120px]">
+                <h4 className="font-bold text-idf-olive text-sm leading-tight">{loc.locationName}</h4>
+                <p className="text-[10px] text-gray-500 font-bold mt-1 uppercase tracking-wider">{loc.eventType}</p>
+                <div className="mt-2 text-[9px] text-idf-olive/60 font-medium">לחצו למידע מורחב</div>
               </div>
             </Popup>
           </Marker>
@@ -135,8 +164,8 @@ export const MapView: React.FC<MapViewProps> = ({ onLocationSelect, selectedLoca
 
         {userLocation && (
           <Marker position={userLocation} icon={createUserIcon()}>
-            <Popup>
-              <div className="text-center font-bold">המיקום שלך</div>
+            <Popup offset={[0, -5]}>
+              <div className="text-center font-bold text-sm">המיקום שלך</div>
             </Popup>
           </Marker>
         )}

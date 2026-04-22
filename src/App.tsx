@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { MapView } from './components/MapView';
 import { InfoPanel } from './components/InfoPanel';
-import { locations, LocationData } from './data/locations';
+import { LocationData } from './data/locations';
 import { motion, AnimatePresence } from 'motion/react';
 
 export default function App() {
